@@ -5,7 +5,7 @@ const colorDisplayEl = document.getElementById("color-display");
 
 function getColorScheme() {
   fetch(
-    `http://www.thecolorapi.com/scheme?hex=${colorPickerEl.value.substring(
+    `https://www.thecolorapi.com/scheme?hex=${colorPickerEl.value.substring(
       1
     )}&mode=${colorSchemeEl.value}&count=5`
   )
