@@ -4,7 +4,7 @@ const submitBtnEl = document.getElementById("submit-btn");
 const colorDisplayEl = document.getElementById("color-display");
 
 document
-  .querySelector("form")
+  .getElementById("color-picker-form")
   .addEventListener("submit", handleSubmitColorScheme);
 
 function handlePageLoad() {
