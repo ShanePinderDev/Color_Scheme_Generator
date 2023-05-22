@@ -3,7 +3,11 @@ const colorSchemeEl = document.getElementById("color-scheme");
 const submitBtnEl = document.getElementById("submit-btn");
 const colorDisplayEl = document.getElementById("color-display");
 
-function getColorScheme() {
+document
+  .querySelector("form")
+  .addEventListener("submit", handleSubmitColorScheme);
+
+function handlePageLoad() {
   fetch(
     `https://www.thecolorapi.com/scheme?hex=${colorPickerEl.value.substring(
       1
@@ -11,7 +15,8 @@ function getColorScheme() {
   )
     .then((res) => res.json())
     .then((data) => {
-      colorDisplayEl.innerHTML = data.colors
+      let allData = "";
+      allData += data.colors
         .map((color) => {
           return `
         <div class="color-container">
@@ -21,9 +26,13 @@ function getColorScheme() {
         `;
         })
         .join("");
+      colorDisplayEl.innerHTML = allData;
     });
 }
 
-submitBtnEl.addEventListener("click", getColorScheme);
+function handleSubmitColorScheme(e) {
+  e.preventDefault();
+  handlePageLoad();
+}
 
-getColorScheme();
+handlePageLoad();
